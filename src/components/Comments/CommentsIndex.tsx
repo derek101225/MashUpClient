@@ -154,7 +154,7 @@ componentDidUpdate(prevProps: any, editBody:any) {
             return(
                 <div>
                     <form onSubmit={this.handleSubmit}>
-                    <TextField  type="text" value={this.state.content} onChange={(e) => this.setState({ content: e.currentTarget.value })} placeholder="Body" />
+                    <TextField  type="text" value={this.state.content} onChange={(e) => this.setState({content: e.currentTarget.value })} placeholder="Enter Comment" />
                     <Button id="button" type="submit">Submit Your other Post</Button>
                     
                     

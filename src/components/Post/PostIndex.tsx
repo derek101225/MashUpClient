@@ -48,6 +48,8 @@ export default class PostCreate extends React.Component<Props, State> {
     onChange(e: any) {
         this.setState(e.target.value)
     }
+
+
     // post comments fetch
     handleSubmit = (e: React.SyntheticEvent) => {
         e.preventDefault()
@@ -172,8 +174,8 @@ export default class PostCreate extends React.Component<Props, State> {
         return(
             <div className='post'>
                 <form onSubmit={this.handleSubmit}>
-                    <TextField  type="text" value={this.state.content} onChange={(e) => this.setState({ content: e.currentTarget.value })} placeholder="Body" />
-                    <Button id="button" type="submit">Submit Your First Post</Button>
+                    <TextField className='text' type="text" value={this.state.content} onChange={(e) => this.setState({ content: e.currentTarget.value })} placeholder="Enter Post" />
+                    <Button  id="button" type="submit">Submit Your First Post</Button>
                     
                     
                     
