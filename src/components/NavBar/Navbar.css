@@ -1,0 +1,11 @@
+nav{
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    background-color: rgb(49, 49, 63);
+
+}
+
+.nav-button{
+    color: white !important;;
+}
