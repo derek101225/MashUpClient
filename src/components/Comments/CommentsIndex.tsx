@@ -155,16 +155,16 @@ componentDidUpdate(prevProps: any, editBody:any) {
                 <div>
                     <form onSubmit={this.handleSubmit}>
                     <TextField  type="text" value={this.state.content} onChange={(e) => this.setState({content: e.currentTarget.value })} placeholder="Enter Comment" />
-                    <Button id="button" type="submit">Submit Your other Post</Button>
+                    <Button id="button" type="submit">Submit Your Comment</Button>
                     
                     
                     
                     {this.state.comment1.map((comment1: any) => (
                     <Card id="card-comment">  
-                    <CardContent><p>Post: </p>{comment1.content}</CardContent>
+                    <CardContent><p>Comment: </p>{comment1.content}</CardContent>
 
                     <CardContent>
-                        <TextField type="text" value={this.state.editBody} onChange={(e) => this.setState({editBody: e.currentTarget.value })} /> 
+                        <TextField type="text"  onChange={(e) => this.setState({editBody: e.currentTarget.value })} /> 
                         <Button id="button" onClick={() => {this.handleCommentUpdate(comment1)}}>Edit Comments</Button>
                     </CardContent>
                     

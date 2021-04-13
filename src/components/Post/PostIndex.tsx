@@ -139,7 +139,7 @@ export default class PostCreate extends React.Component<Props, State> {
     //// Edit Post 
     handleCommentUpdate = (comment: any) => { 
             const url = `http://localhost:5000/posts/${comment.id}`
-        console.log(this.state.editBody) 
+        console.log(this.state.editBody)
         fetch(url, {
             method: 'PUT',
             headers: new Headers({
@@ -147,11 +147,11 @@ export default class PostCreate extends React.Component<Props, State> {
                 'Authorization': this.props.token
             }),
             body: JSON.stringify({post: {
-                content: this.state.content
+                content: this.state.editBody
             } })
         })
             .then(() => {
-                this.updateOff();
+                
                 this.callComments();
             })
             
@@ -175,17 +175,17 @@ export default class PostCreate extends React.Component<Props, State> {
             <div className='post'>
                 <form onSubmit={this.handleSubmit}>
                     <TextField className='text' type="text" value={this.state.content} onChange={(e) => this.setState({ content: e.currentTarget.value })} placeholder="Enter Post" />
-                    <Button  id="button" type="submit">Submit Your First Post</Button>
+                    <Button  id="button" type="submit">Submit Your Post</Button>
                     
                     
                     
                     {this.state.comment.map((comment: any) => (
                     <Card id="card-comment">  
                     <CardContent><p>Post: </p>{comment.content}</CardContent>
-
+                        
                     <CardContent>
-                        <TextField type="text" value={this.state.editBody} onChange={(e) => this.setState({editBody: e.currentTarget.value })} /> 
-                    <Button id="button" onClick={() => {this.handleCommentUpdate(comment)}}>Edit Comments</Button>
+                        <TextField id={comment} type="text" onChange={(e) => this.setState({editBody: e.currentTarget.value })} /> 
+                    <Button id="button" onClick={() => {this.handleCommentUpdate(comment.id)}}>Edit Comments</Button>
                     </CardContent>
                     
 
