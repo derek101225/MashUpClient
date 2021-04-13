@@ -13,12 +13,12 @@ type Props = {
 type State = {
     comment1: [],
     content: string,
-    commentUpdated: any,
-    updateActive: boolean,
-    fetchItems: any,
-    editComment: any | null,
+    // commentUpdated: any,
+    // updateActive: boolean,
+    // fetchItems: any,
+    // editComment: any | null,
     isUpdated: boolean,
-    deleteComment: any | null,
+    // deleteComment: any | null,
     editBody: string
 }
 
@@ -28,12 +28,12 @@ export default class CommentsCreate extends React.Component<Props, State> {
         this.state = {
             comment1: [],
             content: '',
-            editComment: null,
-            commentUpdated: {},
-            updateActive: false,
-            fetchItems: {},
+            // editComment: null,
+            // commentUpdated: {},
+            // updateActive: false,
+            // fetchItems: {},
             isUpdated: false,
-            deleteComment: null,
+            // deleteComment: null,
             editBody: ''
         }
     } 
@@ -53,7 +53,7 @@ export default class CommentsCreate extends React.Component<Props, State> {
             })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data);
+                    // console.log(data);
                     this.setState({
                         comment1: data,
                         
@@ -102,12 +102,6 @@ export default class CommentsCreate extends React.Component<Props, State> {
 
         }
 
-
-       
-    
-       
-
-
          ///Delete Post
 
     deletePost = (comment1: any) => { 
@@ -121,17 +115,17 @@ export default class CommentsCreate extends React.Component<Props, State> {
         }).then(() => this.callComments())
     }
 
-    updateOff = () => {
-        this.setState({
-            updateActive: false
-        })
-    }
+    // updateOff = () => {
+    //     this.setState({
+    //         updateActive: false
+    //     })
+    // }
 
 
 
     handleCommentUpdate = (comment1: any) => { 
         const url = `http://localhost:5000/posts/${comment1.id}`
-    console.log(this.state.editBody) 
+    // console.log(this.state.editBody) 
     fetch(url, {
         method: 'PUT',
         headers: new Headers({
@@ -143,7 +137,7 @@ export default class CommentsCreate extends React.Component<Props, State> {
         } })
     })
         .then(() => {
-            this.updateOff();
+            // this.updateOff();
             this.callComments();
         })
         
@@ -155,7 +149,7 @@ componentDidUpdate(prevProps: any, editBody:any) {
             content: this.state.editBody
             
         })
-    } console.log(editBody)
+     } //console.log(editBody)
 }
 
         render(){
