@@ -50,32 +50,7 @@ export default class PostCreate extends React.Component<Props, State> {
     }
 
 
-    // post comments fetch
-    handleSubmit = (e: React.SyntheticEvent) => {
-        e.preventDefault()
-        console.log(this.state)
-        
-        const url = 'http://localhost:5000/posts/post'
-
-        fetch(url, {
-            method: 'POST',
-            headers: new Headers({
-                'Content-Type': 'application/json',
-                'Authorization': this.props.token
-            }),
-            body: JSON.stringify({
-                post: {
-                    content: this.state.content
-                }
-            })
-
-        })
-            .then((res) => res.json())
-            .then((data) => {
-                // console.log(data);
-            })
-
-        }
+    
 
 
         //Call comments to be displayed
@@ -114,7 +89,32 @@ export default class PostCreate extends React.Component<Props, State> {
     // }
     
 
+            // post comments fetch
+            handleSubmit = (e: React.SyntheticEvent) => {
+                e.preventDefault()
+                console.log(this.state)
+                
+                const url = 'http://localhost:5000/posts/post'
 
+                fetch(url, {
+                    method: 'POST',
+                    headers: new Headers({
+                        'Content-Type': 'application/json',
+                        'Authorization': this.props.token
+                    }),
+                    body: JSON.stringify({
+                        post: {
+                            content: this.state.content
+                        }
+                    })
+
+                })
+                    .then((res) => res.json())
+                    .then((data) => {
+                        this.callComments();
+                    })
+
+                }
 
     ///Delete Post
 

@@ -36,7 +36,40 @@ export default class CommentsCreate extends React.Component<Props, State> {
             deleteComment: null,
             editBody: ''
         }
-    }
+    } 
+    
+    
+    
+    //Call comments to be displayed
+        callComments() {
+            const url = 'http://localhost:5000/auth/bycomment'
+    
+            fetch(url, {
+                method: 'GET',
+                headers: new Headers({
+                    'Content-Type': 'application/json',
+                    'Authorization': this.props.token
+                })
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    this.setState({
+                        comment1: data,
+                        
+                        // id: data.posts.id
+                        
+                    })
+                    
+                })
+                
+        }
+
+
+    componentDidMount() {
+            this.callComments()
+        }
+
 
     onChange(e: any) {
         this.setState(e.target.value)
@@ -64,40 +97,15 @@ export default class CommentsCreate extends React.Component<Props, State> {
         })
             .then((res) => res.json())
             .then((data) => {
-                // console.log(data);
+                this.callComments();
             })
 
         }
 
 
-        //Call comments to be displayed
-        callComments() {
-            const url = 'http://localhost:5000/auth/bycomment'
+       
     
-            fetch(url, {
-                method: 'GET',
-                headers: new Headers({
-                    'Content-Type': 'application/json',
-                    'Authorization': this.props.token
-                })
-            })
-                .then(res => res.json())
-                .then(data => {
-                    console.log(data);
-                    this.setState({
-                        comment1: data,
-                        
-                        // id: data.posts.id
-                        
-                    })
-                    
-                })
-                
-        }
-    
-        componentDidMount() {
-            this.callComments()
-        }
+       
 
 
          ///Delete Post
